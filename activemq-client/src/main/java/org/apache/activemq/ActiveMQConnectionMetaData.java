@@ -39,27 +39,9 @@ public final class ActiveMQConnectionMetaData implements ConnectionMetaData {
     public static final ActiveMQConnectionMetaData INSTANCE = new ActiveMQConnectionMetaData();
 
     static {
-        String version = null;
-        int major = 0;
-        int minor = 0;
-        try {
-            Package p = Package.getPackage("org.apache.activemq");
-            if (p != null) {
-                version = p.getImplementationVersion();
-                if (version != null) {
-                    Pattern pattern = Pattern.compile("(\\d+)\\.(\\d+).*");
-                    Matcher m = pattern.matcher(version);
-                    if (m.matches()) {
-                        major = Integer.parseInt(m.group(1));
-                        minor = Integer.parseInt(m.group(2));
-                    }
-                }
-            }
-        } catch (Throwable e) {
-        }
-        PROVIDER_VERSION = version;
-        PROVIDER_MAJOR_VERSION = major;
-        PROVIDER_MINOR_VERSION = minor;
+        PROVIDER_VERSION = "5";
+        PROVIDER_MAJOR_VERSION = 15;
+        PROVIDER_MINOR_VERSION = 11;
         PLATFORM_DETAILS = ActiveMQConnectionMetaData.getPlatformDetails();
     }
 
